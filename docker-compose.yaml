@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: university
+      POSTGRES_USER: pupkin
+      POSTGRES_PASSWORD: zupkin
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d  # Поместите SQL-скрипты инициализации в эту директорию
+
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    volumes:
+      - ./output:/app/output  # Поместите здесь результаты выполнения запроса к БД
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_NAME: university
+      DB_USER: pupkin
+      DB_PASSWORD: zupkin
