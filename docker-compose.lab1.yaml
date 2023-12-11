@@ -8,14 +8,14 @@ services:
       POSTGRES_USER: pupkin
       POSTGRES_PASSWORD: zupkin
     volumes:
-      - ./db:/docker-entrypoint-initdb.d  # Поместите SQL-скрипты инициализации в эту директорию
+      - ./db:/docker-entrypoint-initdb.d
 
   python-app:
     build:
       context: .
       dockerfile: Dockerfile.app
     volumes:
-      - ./output:/app/output  # Поместите здесь результаты выполнения запроса к БД
+      - ./output:/app/output
     depends_on:
       - db
     environment:
