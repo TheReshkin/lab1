@@ -1,3 +1,4 @@
+#
 import argparse
 
 def generate_docker_compose(database_name, db_user, db_pass):
@@ -29,7 +30,7 @@ services:
       DB_PASSWORD: {db_pass}
 """
 
-    with open('docker-compose-gen.yml', 'w') as f:
+    with open('docker-compose-gen.yaml', 'w') as f:
         f.write(template)
 
 def main():
