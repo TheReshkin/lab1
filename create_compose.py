@@ -1,6 +1,7 @@
 #
 import argparse
 
+
 def generate_docker_compose(database_name, db_user, db_pass):
     template = f"""
 version: '3'
@@ -33,6 +34,7 @@ services:
     with open('docker-compose-gen.yaml', 'w') as f:
         f.write(template)
 
+
 def main():
     parser = argparse.ArgumentParser(description='Generate docker-compose.yml file with user-provided variables')
     parser.add_argument('--database_name', required=True, help='Name of the database')
@@ -43,6 +45,7 @@ def main():
 
     generate_docker_compose(args.database_name, args.db_user, args.db_pass)
     print('docker-compose.yml file generated successfully.')
+
 
 if __name__ == "__main__":
     main()
