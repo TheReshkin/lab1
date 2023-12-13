@@ -1,5 +1,5 @@
 # created by virtualenv automaticall
 .idea/*
 venv/*
-secrets.py
+
 
