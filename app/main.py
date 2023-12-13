@@ -13,10 +13,9 @@ connection = psycopg2.connect(
 )
 
 cursor = connection.cursor()
-sql_query = """
-SELECT DISTINCT professor_name
-FROM exams;
-
+sql_query = """SELECT DISTINCT e.professor_name, s.subject_name
+FROM exams e
+JOIN subjects s ON e.subject_id = s.subject_id;
 """
 
 cursor.execute(sql_query)
@@ -25,7 +24,7 @@ cursor.close()
 connection.close()
 
 # Вывод результатов в виде таблицы и запись в файл
-output_table = PrettyTable(["Предмет", "Дата экзамена"])
+output_table = PrettyTable(["Преподаватель", "Название предмета"])
 
 for row in results:
     output_table.add_row(row)
