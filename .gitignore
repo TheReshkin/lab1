@@ -1,5 +1,6 @@
 # created by virtualenv automaticall
 .idea/*
 venv/*
+task1/__pycache__/
 
 
